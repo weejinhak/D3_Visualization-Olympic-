@@ -3,8 +3,8 @@ const _ = require('lodash');
 var express = require('express');
 var router = express.Router();
 
-const winterData = fs.readFileSync('./public/csv_file/olympic_winter.csv').toString();
-const summerData = fs.readFileSync('./public/csv_file/olympic_summer.csv').toString();
+const winterData = fs.readFileSync('../public/csv_file/olympic_winter.csv').toString();
+const summerData = fs.readFileSync('../public/csv_file/olympic_summer.csv').toString();
 
 const wLines = winterData.split('\n');
 const wKeys = wLines[0].split(',');
