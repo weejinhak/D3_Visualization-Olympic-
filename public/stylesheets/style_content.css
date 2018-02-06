@@ -1,0 +1,174 @@
+.contents {
+    padding-left: 6%;
+}
+
+.contents > #title {
+    font-family: 'Rubik Mono One', sans-serif;
+    display: inline-block;
+    margin-right: 52%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.contents > #contents-right {
+    width: 20%;
+    height: 400px;
+    display: inline-block;
+}
+
+.season-button {
+    display: inline-block;
+    background-color: #2196F3;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 13px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.season-button:hover {
+    background-color: rgb(29, 114, 184);
+}
+
+#sports-list-container {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    border-radius: 20px;
+    display: inline-block;
+    background: rgb(230, 230, 230);
+    overflow-y: auto;
+}
+
+#sports-list-container::-webkit-scrollbar-track {
+   border-radius: 10px;
+   background-color: #F5F5F5;
+}
+
+#sports-list-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+#sports-list-container::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: #555;
+}
+
+.check-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.check-container:hover input ~ .check-mark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check-container input:checked ~ .check-mark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.check-container input:checked ~ .check-mark:after {
+    display: block;
+}
+
+
+.check-container .check-mark:after {
+    left: 5px;
+    top: 3px;
+    width: 5px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#slider {
+    width: 60%;
+}
+
+
+
+table {
+    width: 90%;
+    height: 30px;
+    table-layout: fixed;
+}
+
+table, th, td {
+    border: white 1px solid;
+    border-collapse: collapse;
+    opacity: 0.95;
+    font-size: 11px;
+    color: black;
+    align-content: center;
+}
+
+th {
+    width: 15px;
+    padding: 2px 0px 2px 0px;
+    text-align: center;
+    background-color: #2196F3;
+    color: white;
+    font-weight: lighter;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+td {
+    width: 15px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+td:nth-child(even) {
+    background-color: rgb(230, 230, 230);
+}
+
+td:nth-child(odd) {
+    background-color: white;
+}

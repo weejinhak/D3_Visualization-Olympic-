@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+  .contents
+    p#title Olympic
+
+    
+    #map-container
+    
+    #contents-right
+      #season-button-container
+        button.season-button#summer-button(value="summer") Summer
+        button.season-button#winter-button(value="winter") Winter
+
+      #sports-list-container
+        #sports-list
+    
+    #slider
+    #slider-value
+
+    #country-medal-rank
+
+    table#ranking-table
+  
+  script(src='babel-polyfill/dist/polyfill.min.js')
+  script(src='/lodash/lodash.min.js')
+  script(src='/jquery/dist/jquery.min.js')
+  script(src='http://code.jquery.com/ui/1.10.3/jquery-ui.js')
+  script( src="https://d3js.org/d3.v4.js")
+  script( src="https://d3js.org/topojson.v2.min.js")
+  script( src="https://d3js.org/d3-scale-chromatic.v1.min.js")
+  script( src="https://d3js.org/d3-geo-projection.v1.min.js")
+  script(src="/d3-tip.js")
+  script(src="/functions.js")
+  script(src='/getOlympicData.js')
+  script(src='/getVariableData.js')
+  script(src='/showOlympicData.js')
+  script(src="/showWorldMap.js")
