@@ -36,7 +36,6 @@ svg_map.append("g")
   });
 
 
-
 })();
 
 
