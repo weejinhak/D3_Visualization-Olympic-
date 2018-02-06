@@ -41,12 +41,6 @@ var width = 960,
 var svg_map = d3.select("#map-container").insert("svg").attr("id", "map").attr("height", height).attr("width", width);
 var path = d3.geoPath(d3.geoRobinson());
 
-var tool_tip = d3.tip().attr("class", "d3-tip").offset([-1, 0]).html(function (d) {
-  return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>";
-});
-
-svg_map.call(tool_tip);
-
 svg_map.append("g").attr("class", "legend");
 svg_map.append("g").attr("class", "legend-title").append("text");
 

@@ -1,11 +1,14 @@
-'use strict';
+"use strict";
+
+var hostCountry = null;
+var prevHostCountry = null;
 
 function fillMap(selection, color, data) {
 
   // TODO: minor fix, sometimes d gets a -99, why?
   selection.attr("fill", function (d) {
     return typeof data[d.id] === 'undefined' ? color_na : d3.rgb(color(data[d.id]));
-  }).on('mouseover', tool_tip.show).on('mouseout', tool_tip.hide);
+  });
 }
 
 function setPathTitle(selection, data) {
@@ -21,9 +24,18 @@ function updateMap(color, data) {
 
   // update path titles
   d3.selectAll("svg#map path title").call(setPathTitle, data);
+
+  d3.select("#" + prevHostCountry).attr("style", null);
+
+  hostCountry = contents.hostCountry;
+
+  d3.select("#" + hostCountry).style("opacity", 1).style("stroke", "black").style("stroke-width", 2);
+
+  prevHostCountry = hostCountry;
 }
 
 function renderLegend(color, data) {
+
   var svg_height = +d3.select("svg#map").attr("height");
   var legend_items = pairQuantiles(color.domain());
 

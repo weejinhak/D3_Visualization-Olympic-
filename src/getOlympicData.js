@@ -21,3 +21,7 @@ const countryMedalRankLoader = new function (season, year, checkedSports) {
 const countryMedalValueLoader = new function (season, year, checkedSports) {
   this.getCountryMedalValue = async (season, year, checkedSports) => $.get('/a/olympic/' + season + '/countryMedalValue/' + year + '&' + checkedSports);
 };
+
+const hostCountryLoader = new function (season, year) {
+  this.getHostCountry = async (season, year) => $.get('/a/olympic/' + season + '/hostCountry/' + year);
+};

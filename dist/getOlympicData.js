@@ -133,3 +133,28 @@ var countryMedalValueLoader = new function (season, year, checkedSports) {
     };
   }();
 }();
+
+var hostCountryLoader = new function (season, year) {
+  var _this7 = this;
+
+  this.getHostCountry = function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(season, year) {
+      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              return _context7.abrupt('return', $.get('/a/olympic/' + season + '/hostCountry/' + year));
+
+            case 1:
+            case 'end':
+              return _context7.stop();
+          }
+        }
+      }, _callee7, _this7);
+    }));
+
+    return function (_x9, _x10) {
+      return _ref7.apply(this, arguments);
+    };
+  }();
+}();

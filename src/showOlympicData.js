@@ -1,6 +1,7 @@
 const contents = new function() {
     const that = this;
     this.countryMedalValue = null;
+    this.hostCountry = null;
 
     let season = null;
     let year = null;
@@ -59,6 +60,7 @@ const contents = new function() {
 
     async function showSportsList() {
         const sportsList = await sportsListLoader.getSportsList(season, year);
+        that.hostCountry = await hostCountryLoader.getHostCountry(season, year);
         $sportsList.empty();
         _.map(sportsList, s => {
             $(`<label class="check-container">${s}<input type="checkbox" name="sports" value="${s}" checked></input><span class="check-mark"></span></label><br>`).on("change", async() => {
@@ -77,7 +79,7 @@ const contents = new function() {
         showRankTable();
     }
 
-    function initSlider() {
+    async function initSlider() {
         $slider.slider({
             range: "min",
             value: 0,
@@ -90,6 +92,7 @@ const contents = new function() {
             }
         });
         $sliderVal.text(yearList[0]);
+        that.hostCountry = await hostCountryLoader.getHostCountry(season, year);
     }
 
     async function showRankTable() {

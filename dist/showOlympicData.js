@@ -125,6 +125,11 @@ var contents = new function () {
 
                         case 2:
                             sportsList = _context6.sent;
+                            _context6.next = 5;
+                            return hostCountryLoader.getHostCountry(season, year);
+
+                        case 5:
+                            that.hostCountry = _context6.sent;
 
                             $sportsList.empty();
                             _.map(sportsList, function (s) {
@@ -145,7 +150,7 @@ var contents = new function () {
                             });
                             getSportsList();
 
-                        case 6:
+                        case 9:
                         case 'end':
                             return _context6.stop();
                     }
@@ -158,23 +163,60 @@ var contents = new function () {
         };
     }();
 
-    var showRankTable = function () {
+    var initSlider = function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-            var index;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
                 while (1) {
                     switch (_context7.prev = _context7.next) {
                         case 0:
-                            _context7.next = 2;
+                            $slider.slider({
+                                range: "min",
+                                value: 0,
+                                min: 0,
+                                max: yearList.length - 1,
+                                step: 1,
+                                slide: function slide(event, ui) {
+                                    $sliderVal.text(yearList[ui.value]);
+                                    year = yearList[ui.value];
+                                }
+                            });
+                            $sliderVal.text(yearList[0]);
+                            _context7.next = 4;
+                            return hostCountryLoader.getHostCountry(season, year);
+
+                        case 4:
+                            that.hostCountry = _context7.sent;
+
+                        case 5:
+                        case 'end':
+                            return _context7.stop();
+                    }
+                }
+            }, _callee7, this);
+        }));
+
+        return function initSlider() {
+            return _ref7.apply(this, arguments);
+        };
+    }();
+
+    var showRankTable = function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            var index;
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                while (1) {
+                    switch (_context8.prev = _context8.next) {
+                        case 0:
+                            _context8.next = 2;
                             return countryMedalRankLoader.getCountryMedalRank(season, year, checkedSports);
 
                         case 2:
-                            countryMedalRank = _context7.sent;
-                            _context7.next = 5;
+                            countryMedalRank = _context8.sent;
+                            _context8.next = 5;
                             return countryMedalValueLoader.getCountryMedalValue(season, year, checkedSports);
 
                         case 5:
-                            that.countryMedalValue = _context7.sent;
+                            that.countryMedalValue = _context8.sent;
                             index = countryMedalRank.length;
 
                             $('#ranking-table').empty();
@@ -194,19 +236,20 @@ var contents = new function () {
 
                         case 11:
                         case 'end':
-                            return _context7.stop();
+                            return _context8.stop();
                     }
                 }
-            }, _callee7, this);
+            }, _callee8, this);
         }));
 
         return function showRankTable() {
-            return _ref7.apply(this, arguments);
+            return _ref8.apply(this, arguments);
         };
     }();
 
     var that = this;
     this.countryMedalValue = null;
+    this.hostCountry = null;
 
     var season = null;
     var year = null;
@@ -226,21 +269,6 @@ var contents = new function () {
             checkedSports.push($(this).val());
         });
         showRankTable();
-    }
-
-    function initSlider() {
-        $slider.slider({
-            range: "min",
-            value: 0,
-            min: 0,
-            max: yearList.length - 1,
-            step: 1,
-            slide: function slide(event, ui) {
-                $sliderVal.text(yearList[ui.value]);
-                year = yearList[ui.value];
-            }
-        });
-        $sliderVal.text(yearList[0]);
     }
 
     initView();

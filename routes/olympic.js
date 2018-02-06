@@ -281,6 +281,23 @@ router.get('/summer', function (req, res) {
     
 });
 
+// [개최년도] ——> 개최국 (여름)
+router.get('/summer/hostCountry/:YEAR', function (req, res, next) {
+    let hostCountry = "";
+
+    const year = req.params.YEAR;
+    const hostCountryData = _.chain(sDatas)
+        .filter(d => d.Year * 1 == year)
+        .groupBy(d => d.Country)
+        .value();
+    
+    _.map(hostCountryData, (v, k) => {
+        hostCountry = k;
+    });
+
+    res.json(hostCountry);
+});
+
 
 
 
@@ -466,7 +483,7 @@ router.get('/winter/AthleteSex/:YEAR&:MEDALTYPE', function getAthleteSex(req, re
     res.json(athleteSexList);
 });
 
-// [개최년도] ---> Athlete, AthleteBirthdate, AthleteSex (겨울)
+// [개최년도] —> Athlete, AthleteBirthdate, AthleteSex (겨울)
 router.get('/winter/allAthleteInfoByMedal/:YEAR', function getAllAthleteInfoByMedal(req, res, next) {
     const year = req.params.YEAR;
     const goldMedalList = _.chain(wDatas)
@@ -530,6 +547,23 @@ router.get('/winter', function (req, res) {
     
     res.json(winterYearArray);
     
+});
+
+// [개최년도] ——> 개최국 (겨울)
+router.get('/winter/hostCountry/:YEAR', function (req, res, next) {
+    let hostCountry = "";
+
+    const year = req.params.YEAR;
+    const hostCountryData = _.chain(wDatas)
+        .filter(d => d.Year * 1 == year)
+        .groupBy(d => d.Country)
+        .value();
+    
+    _.map(hostCountryData, (v, k) => {
+        hostCountry = k;
+    });
+    
+    res.json(hostCountry);
 });
 
 
