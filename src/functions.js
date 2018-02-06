@@ -106,8 +106,6 @@ function legendMouseOut(color, data) {
     .call(fillMap, color, data);
 }
 
-
-
 // pairs neighboring elements in array of quantile bins
 function pairQuantiles(arr) {
 

@@ -1,0 +1,87 @@
+
+.cell {
+    padding : 8px;
+}
+
+.zone {
+    width : 100%;
+    height : 100%;
+    background : #fff;
+    border: solid 1px #aaa;
+}
+
+
+
+body {
+    padding: 0;
+    margin: 0;
+    background : #aaa;
+}
+
+.content {
+    max-width : 1200px;
+    margin: auto;
+    background : #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.nav {
+    height: 56px;
+    border : solid 1px #eee;
+}
+
+
+
+.field {
+    height : calc(100vh - 456px);
+    display: flex;
+}
+
+.field > .map {
+    flex: 1;
+    height : 100%;
+
+}
+#map-container{
+    width : 100%;
+    height : 100%;
+}
+
+#map-container > svg {
+    width : 100%;
+    height : 100%;
+}
+
+
+.field > .filter {
+    width : 300px;
+    height : 100%;
+
+}
+
+.table {
+
+    height: 200px;
+}
+
+.subview {
+
+    height: 200px;
+}
+
+.field > .filter > .category {
+    display: flex;
+    height : 48px;
+
+}
+
+.field > .filter > .category > .selector {
+    flex: 1;
+    height : 100%;
+
+    text-align: center;
+    line-height: 48px;
+}
