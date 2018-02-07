@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const winterData = fs.readFileSync('../public/csv_file/olympic_winter.csv').toString();
 const summerData = fs.readFileSync('../public/csv_file/olympic_summer.csv').toString();
@@ -10,9 +10,9 @@ const wLines = winterData.split('\n');
 const wKeys = wLines[0].split(',');
 
 const wDatas = _.chain(wLines).map(l => {
-    var o = {};
-    var values = l.split(',');
-    for (var j = 0; j < wKeys.length; j++) {
+    const o = {};
+    const values = l.split(',');
+    for (let j = 0; j < wKeys.length; j++) {
         o[wKeys[j]] = values[j];
     }
     return o;
@@ -23,9 +23,9 @@ const sKeys = sLines[0].split(',');
 
 const sDatas = _.chain(sLines)
                 .map(l => {
-    var o = {};
-    var values = l.split(',');
-    for (var j = 0; j < sKeys.length; j++) {
+                    const o = {};
+                    const values = l.split(',');
+                    for (let j = 0; j < sKeys.length; j++) {
         o[sKeys[j]] = values[j];
     }
     return o;
@@ -136,10 +136,10 @@ router.get('/summer/sportsAthleteList/:YEAR&:CHECKED_SPORTS&:COUNTRY&:MEDALTYPE'
         .filter(d => d.Team == country)
         .filter(d => d.Medal == medalType)
         .map(d => {
-            var ret = {
+            const ret = {
                 'event': d.Event,
                 'althlete': d.Athlete
-            }
+            };
             return ret;
         })
         .value();
@@ -269,16 +269,16 @@ router.get('/summer', function (req, res) {
     const summerYearList = _.chain(sDatas)
         .groupBy(d => d.Year)
         .value();
-        
+
     const summerYearArray = _.map(summerYearList, (d,k)=>{
         if(_.isNil(k) || k === 'Year') return null;
         else if(k === 'undefined') return null;
         return k;
     }).filter(d => !_.isNil(d));
-    
+
 
     res.json(summerYearArray);
-    
+
 });
 
 // [개최년도] ——> 개최국 (여름)
@@ -290,7 +290,7 @@ router.get('/summer/hostCountry/:YEAR', function (req, res, next) {
         .filter(d => d.Year * 1 == year)
         .groupBy(d => d.Country)
         .value();
-    
+
     _.map(hostCountryData, (v, k) => {
         hostCountry = k;
     });
@@ -405,10 +405,10 @@ router.get('/winter/sportsAthleteList/:YEAR&:CHECKED_SPORTS&:COUNTRY&:MEDALTYPE'
         .filter(d => d.Team == country)
         .filter(d => d.Medal == medalType)
         .map(d => {
-            var ret = {
+            const ret = {
                 'event': d.Event,
                 'althlete': d.Athlete
-            }
+            };
             return ret;
         })
         .value();
@@ -538,15 +538,15 @@ router.get('/winter', function (req, res) {
     const winterYearList = _.chain(wDatas)
         .groupBy(d => d.Year)
         .value();
-        
+
     const winterYearArray = _.map(winterYearList, (d,k)=>{
         if(_.isNil(k) || k === 'Year') return null;
         else if(k === 'undefined') return null;
         return k;
     }).filter(d => !_.isNil(d));
-    
+
     res.json(winterYearArray);
-    
+
 });
 
 // [개최년도] ——> 개최국 (겨울)
@@ -558,11 +558,11 @@ router.get('/winter/hostCountry/:YEAR', function (req, res, next) {
         .filter(d => d.Year * 1 == year)
         .groupBy(d => d.Country)
         .value();
-    
+
     _.map(hostCountryData, (v, k) => {
         hostCountry = k;
     });
-    
+
     res.json(hostCountry);
 });
 

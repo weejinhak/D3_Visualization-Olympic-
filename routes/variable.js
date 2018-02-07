@@ -1,7 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 function getData(fileName) {
     const data = fs.readFileSync('./public/csv_file/' + fileName).toString();
@@ -9,8 +9,8 @@ function getData(fileName) {
     const Keys = Lines[0].split(',');
 
     const resultData = _.chain(Lines).map(l => {
-        var o = {};
-        var values = l.split(',');
+        const o = {};
+        const values = l.split(',');
         const year = values[0];
         o[year] = {};
         for (var j = 1; j < Keys.length; j++) {

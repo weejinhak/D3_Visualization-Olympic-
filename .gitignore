@@ -32,6 +32,13 @@ bower_components
 # intellij
 .DS_Store
 .idea
+
+#vsCode
+.vscode/
+
+#babel
+dist/
+
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
