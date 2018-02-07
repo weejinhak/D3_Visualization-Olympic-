@@ -6,38 +6,42 @@
 .zone {
     width : 100%;
     height : 100%;
-    background : #fff;
     border: solid 1px #aaa;
 }
 
 
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
 
 body {
     padding: 0;
     margin: 0;
-    background : #aaa;
 }
 
 .content {
     max-width : 1200px;
     margin: auto;
-    background : #fff;
+    border: solid 1px #aaa;
 }
 
-* {
-    box-sizing: border-box;
-}
 
 .nav {
     height: 56px;
     border : solid 1px #eee;
 }
 
+.nav > #title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
 
 
 .field {
     height : calc(100vh - 456px);
-    display: flex;
+    display : flex;
 }
 
 .field > .map {
@@ -59,17 +63,159 @@ body {
 .field > .filter {
     width : 300px;
     height : 100%;
-
 }
+
+.category {
+    height : 15%;
+    display : flex;
+}
+
+.category > .selector {
+    flex : 1;
+    background-color : #0097A7;
+    border-radius : 2px;
+    margin : 0 3px 0 3px;
+    font-size : 15px;
+    color : white;
+    border : none;
+    text-align : center;
+    cursor : pointer;
+    transition-duration : 0.4s;
+}
+
+.category > .selector:hover {
+    background-color : #00838F;
+}
+
+.list {
+    width : 100%;
+    height : 85%;
+    padding: 20px;
+    border-radius: 10px;
+    background: #EEEEEE;
+    overflow-y: auto;
+}
+
+
+.list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.list::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #555;
+}
+
+.check-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    user-select: none;
+}
+
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+}
+
+.check-container input:checked ~ .check-mark {
+    background-color: #0097A7;
+}
+
+.check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.check-container input:checked ~ .check-mark:after {
+    display: block;
+}
+
+.check-container .check-mark:after {
+    left: 5px;
+    top: 3px;
+    width: 5px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
 
 .table {
-
-    height: 200px;
+    height : 175px;
 }
+
+
+table {
+    width: 90%;
+    height: 30px;
+    table-layout: fixed;
+}
+
+table, th, td {
+    border: white 1px solid;
+    border-collapse: collapse;
+    opacity: 0.95;
+    font-size: 11px;
+    color: black;
+    align-content: center;
+}
+
+th {
+    width: 15px;
+    padding: 2px 0px 2px 0px;
+    text-align: center;
+    background-color: #0097A7;
+    color: white;
+}
+
+td {
+    width: 15px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+td:nth-child(even) {
+    background-color: rgb(230, 230, 230);
+}
+
+td:nth-child(odd) {
+    background-color: white;
+}
+
+
+
+
+
 
 .subview {
 
-    height: 200px;
+    height : 175px;
 }
 
 .field > .filter > .category {

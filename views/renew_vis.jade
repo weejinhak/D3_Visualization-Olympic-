@@ -6,21 +6,26 @@ html
         link(rel='stylesheet', href='/stylesheets/style_map.css')
         link(rel='stylesheet', href='/stylesheets/content.renew.css')
         link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')
-        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Rubik+Mono+One")
+        link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Roboto|Russo+One')
     body
         .content
             .nav
+                p#title Olympic
             .field
                 .map.cell
                     #map-container.zone
                 .filter.cell
                     .zone
                         .category
-                            .selector SUMMER
-                            .selector WINTER
-                        #sports-list.list
+                            button.selector#summer-button(value="summer") SUMMER
+                            button.selector#winter-button(value="winter") WINTER
+                        .list
+                            #sports-list
+            .slider.cell
+                #slider
+                #slider-value
             .table.cell
-                #ranking-table.zone
+                table#ranking-table.zone
             .subview.cell
                 .zone
 
@@ -28,16 +33,15 @@ html
     script(src='/lodash/lodash.min.js')
     script(src='/jquery/dist/jquery.min.js')
     script(src='http://code.jquery.com/ui/1.10.3/jquery-ui.js')
-    script( src="https://d3js.org/d3.v4.js")
-    script( src="https://d3js.org/topojson.v2.min.js")
-    script( src="https://d3js.org/d3-scale-chromatic.v1.min.js")
-    script( src="https://d3js.org/d3-geo-projection.v1.min.js")
-    script(src="/d3-tip.js")
-    script(src="/functions.js")
+    script(src="https://d3js.org/d3.v4.js")
+    script(src="https://d3js.org/topojson.v2.min.js")
+    script(src="https://d3js.org/d3-scale-chromatic.v1.min.js")
+    script(src="https://d3js.org/d3-geo-projection.v1.min.js")
+    script(src='/functions.js')
     script(src='/getOlympicData.js')
     script(src='/getVariableData.js')
     script(src='/showOlympicData.js')
-    script(src="/showWorldMap.js")
+    script(src='/showWorldMap.js')
 
 
 
