@@ -3,9 +3,8 @@ let prevHostCountry = null;
 
 function fillMap(selection, color, data) {
 
-  // TODO: minor fix, sometimes d gets a -99, why?
   selection
-    .attr("fill", function(d) { return typeof data[d.id] === 'undefined' ? color_na :
+    .attr("fill", function(d) { return typeof data[d.id] === 'undefined' ? color_init :
                                               d3.rgb(color(data[d.id])); });
 }
 
@@ -75,8 +74,6 @@ function renderLegend(color, data) {
 }
 
 function calcColorScale(data) {
-  // TODO: minor, check how many data poins we've got
-  // with few datapoints the resulting legend gets confusing
 
   // get values and sort
   let data_values = Object.values(data).sort( function(a, b){ return a-b; });
@@ -92,44 +89,33 @@ function calcColorScale(data) {
   return scale;
 }
 
-/// event handlers /////
 
 function legendMouseOver(color_key, color, data) {
 
-  // cancels ongoing transitions (e.g., for quick mouseovers)
   d3.selectAll("svg#map path").interrupt();
 
-  // TODO: improve, only colored paths need to be filled
 
-  // then we also need to refill the map
   d3.selectAll("svg#map path")
     .call(fillMap, color, data);
 
-  // and fade all other regions
   d3.selectAll("svg#map path:not([fill = '"+ d3.rgb(color_key) +"'])")
-      .attr("fill", color_na);
+      .attr("fill", color_init);
 }
 
 function legendMouseOut(color, data) {
 
-  // TODO: minor, only 'colored' paths need to be refilled
-  // refill entire map
   d3.selectAll("svg#map path").transition()
     .delay(100)
     .call(fillMap, color, data);
 }
 
 
-
-// pairs neighboring elements in array of quantile bins
 function pairQuantiles(arr) {
 
   let new_arr = [];
   for (let i=0; i<arr.length-1; i++) {
 
-    // allow for closed intervals (depends on d3.scaleQuantile)
-    // assumes that neighboring elements are equal
-    if(i == arr.length-2) {
+    if(i === arr.length-2) {
       new_arr.push([arr[i],  arr[i+1]]);
     }
     else {
