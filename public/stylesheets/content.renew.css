@@ -85,3 +85,10 @@ body {
     text-align: center;
     line-height: 48px;
 }
+
+.field > .filter > .category > .list{
+    flex: 1;
+    height: 100%;
+    background : #fffaaa;
+    overflow-y: auto;
+}
