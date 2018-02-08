@@ -152,7 +152,7 @@ function pairQuantiles(arr) {
 function renderBars(color, data) {
 
     // turn data into array of objects
-    array = [];
+    let array = [];
     for( let key of Object.keys(data) ) {
         array.push({'id':key, 'value': data[key]});
     }
@@ -196,11 +196,11 @@ function renderBars(color, data) {
 
 function sortArrObj(arr,sortkey) {
 
-    sorted_keys = arr.map( function(elem) {return elem[sortkey];}).sort();
+    let sorted_keys = arr.map( function(elem) {return elem[sortkey];}).sort();
 
-    newarr = [];
+    let newarr = [];
     for(let key of sorted_keys){
-        for(i in arr){
+        for(let i in arr){
             if(arr[i][sortkey] === key){
                 newarr.push(arr[i]);
                 continue;

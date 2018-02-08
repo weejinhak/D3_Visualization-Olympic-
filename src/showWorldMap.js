@@ -7,24 +7,24 @@ const svg_map = d3.select("#map-container").append("svg")
     .attr("width", width);
 const path = d3.geoPath(d3.geoRobinson());
 
-// init bars container
-const margin = {top: 50, right:10, bottom:50, left:30};
-const svgBarsWidth = 960 - margin.left - margin.right,
-    svgBarsHeight = 200 - margin.top - margin.bottom;
-
-const x = d3.scaleBand()
-    .rangeRound([0, svgBarsWidth])
-    .padding(.05);
-
-const y = d3.scaleLinear().range([svgBarsHeight, 0]);
-
-const svg_bars = d3.select("#medal-rank").append("svg")
-    .attr("id", "bars")
-    .attr("width", svgBarsWidth + margin.left + margin.right)
-    .attr("height", svgBarsHeight + margin.top + margin.bottom)
-    .append("g")
-    .attr("class", "bars")
-    .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+// // init bars container
+// const margin = {top: 50, right:10, bottom:50, left:30};
+// const svgBarsWidth = 960 - margin.left - margin.right,
+//     svgBarsHeight = 200 - margin.top - margin.bottom;
+//
+// const x = d3.scaleBand()
+//     .rangeRound([0, svgBarsWidth])
+//     .padding(.05);
+//
+// const y = d3.scaleLinear().range([svgBarsHeight, 0]);
+//
+// const svg_bars = d3.select("#medal-rank").append("svg")
+//     .attr("id", "bars")
+//     .attr("width", svgBarsWidth + margin.left + margin.right)
+//     .attr("height", svgBarsHeight + margin.top + margin.bottom)
+//     .append("g")
+//     .attr("class", "bars")
+//     .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
 
 (function initMap() {
@@ -64,6 +64,6 @@ async function showWorldMap() {
     let color = calcColorScale(medal);
     updateMap(color, medal);
     renderLegend(color, medal);
-    renderBars(color, medal);
+    // renderBars(color, medal);
 
 }
