@@ -200,11 +200,11 @@ td {
     word-wrap: break-word;
 }
 
-td:nth-child(even) {
+td:nth-child(odd) {
     background-color: rgb(230, 230, 230);
 }
 
-td:nth-child(odd) {
+td:nth-child(even) {
     background-color: white;
 }
 

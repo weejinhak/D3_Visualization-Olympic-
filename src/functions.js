@@ -130,3 +130,65 @@ function pairQuantiles(arr) {
 
   return new_arr;
 }
+
+function renderBars(color, data) {
+
+    // turn data into array of objects
+    array = [];
+    for( let key of Object.keys(data) ) {
+        array.push({'id':key, 'value': data[key]});
+    }
+
+    // sort by country id
+    array = sortArrObj(array, 'id');
+
+    x.domain(array.map(function(d) {return d.id;}));
+    y.domain([0, d3.max(Object.values(data), function(d) {return d;})]);
+
+    d3.select("svg#bars g.axis").remove();
+    let axis = d3.select("svg#bars").append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate("+ 30 +"," + (svgBarsHeight+margin.top) + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", "rotate(-65)");
+
+    let bars = d3.select("svg#bars g.bars").selectAll("rect").data(array);
+    bars.exit().remove();
+    bars.enter().append("rect")
+        .merge(bars)
+        .attr("fill", function(d) { return color(d.value); })
+        .attr("x", function(d) { return x(d.id); })
+        .attr("width", x.bandwidth())
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) {return svgBarsHeight - y(d.value); });
+
+    let annot = d3.select("svg#bars g.bars").selectAll("text").data(array);
+    annot.exit().remove();
+    annot.enter().append("text")
+        .merge(annot)
+        .text(function(d) {return d3.format(",")(d.value);})
+        .attr("class", "barlabel")
+        .attr("x", function(d) { return x(d.id) + x.bandwidth()/2; })
+        .attr("y", function(d) { return y(d.value) - 5; });
+}
+
+function sortArrObj(arr,sortkey) {
+
+    sorted_keys = arr.map( function(elem) {return elem[sortkey];}).sort();
+
+    newarr = [];
+    for(let key of sorted_keys){
+        for(i in arr){
+            if(arr[i][sortkey] === key){
+                newarr.push(arr[i]);
+                continue;
+            }
+        }
+    }
+
+    return newarr;
+}
