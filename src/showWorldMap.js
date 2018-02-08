@@ -55,6 +55,8 @@ const svg_bars = d3.select("#medal-rank").append("svg")
             .call(setPathTitle, data);
     });
 
+
+
 })();
 
 async function showWorldMap() {
