@@ -28,7 +28,7 @@ body {
 
 
 .nav {
-    height: 56px;
+    height: 50px;
     border : solid 1px #eee;
 }
 
@@ -40,28 +40,27 @@ body {
 
 
 .field {
-    height : calc(100vh - 456px);
+    height : calc(100vh - 370px);
     display : flex;
 }
 
 .field > .map {
-    flex: 1;
+    width: 850px;
     height : 100%;
-
 }
+
 #map-container{
     width : 100%;
     height : 100%;
 }
 
-#map-container > svg {
-    width : 100%;
-    height : 100%;
+#map-container > #map {
+    transform: scale(0.8);
+    transform-origin: 15% 10% 0;
 }
 
-
 .field > .filter {
-    width : 300px;
+    flex: 1;
     height : 100%;
 }
 
@@ -81,6 +80,8 @@ body {
     text-align : center;
     cursor : pointer;
     transition-duration : 0.4s;
+    height : 100%;
+    line-height: 48px;
 }
 
 .category > .selector:hover {
@@ -94,6 +95,7 @@ body {
     border-radius: 10px;
     background: #EEEEEE;
     overflow-y: auto;
+    flex: 1;
 }
 
 
@@ -113,67 +115,81 @@ body {
     background-color: #555;
 }
 
-.check-container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    cursor: pointer;
-    font-size: 15px;
-    user-select: none;
+/*.check-container {*/
+    /*display: block;*/
+    /*position: relative;*/
+    /*padding-left: 35px;*/
+    /*cursor: pointer;*/
+    /*font-size: 15px;*/
+    /*user-select: none;*/
+/*}*/
+
+/*.check-container input {*/
+    /*position: absolute;*/
+    /*opacity: 0;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*.check-mark {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 18px;*/
+    /*width: 18px;*/
+    /*background-color: #eee;*/
+/*}*/
+
+/*.check-container input:checked ~ .check-mark {*/
+    /*background-color: #0097A7;*/
+/*}*/
+
+/*.check-mark:after {*/
+    /*content: "";*/
+    /*position: absolute;*/
+    /*display: none;*/
+/*}*/
+
+/*.check-container input:checked ~ .check-mark:after {*/
+    /*display: block;*/
+/*}*/
+
+/*.check-container .check-mark:after {*/
+    /*left: 5px;*/
+    /*top: 3px;*/
+    /*width: 5px;*/
+    /*height: 7px;*/
+    /*border: solid white;*/
+    /*border-width: 0 2px 2px 0;*/
+    /*-webkit-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    /*transform: rotate(45deg);*/
+/*}*/
+
+input[type=checkbox] {
+    display:none;
 }
 
-.check-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
+/*input[type=checkbox] + label {*/
 
-.check-mark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    background-color: #eee;
-}
+    /*display: inline-block;*/
 
-.check-container input:checked ~ .check-mark {
-    background-color: #0097A7;
-}
+    /*cursor: pointer;*/
 
-.check-mark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+    /*line-height: 22px;*/
 
-.check-container input:checked ~ .check-mark:after {
-    display: block;
-}
+    /*padding-left: 22px;*/
 
-.check-container .check-mark:after {
-    left: 5px;
-    top: 3px;
-    width: 5px;
-    height: 7px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
+    /*background: url("") left/22px no-repeat;*/
 
+/*}*/
 
-
-
-.table {
-    height : 175px;
-}
+/*input[type=checkbox]:checked + label {*/
+    /*background-image: url('./public/images/checked-symbol.png') no-repeat;*/
+/*}*/
 
 
 table {
     width: 90%;
-    height: 30px;
     table-layout: fixed;
 }
 
@@ -186,17 +202,19 @@ table, th, td {
     align-content: center;
 }
 
-th {
-    width: 15px;
-    padding: 2px 0px 2px 0px;
+th, td {
+    height: 30px;
     text-align: center;
+}
+
+th {
+    width: 70px;
+    padding: 2px 0 2px 0;
     background-color: #0097A7;
     color: white;
 }
 
 td {
-    width: 15px;
-    text-align: center;
     word-wrap: break-word;
 }
 
@@ -209,40 +227,14 @@ td:nth-child(even) {
 }
 
 
-
-
-
-
 .subview {
-
-    height : 175px;
+    height : 65px;
 }
 
-.field > .filter > .category {
-    display: flex;
-    height : 48px;
-
-}
-
-.field > .filter > .category > .selector {
-    flex: 1;
-    height : 100%;
-
-    text-align: center;
-    line-height: 48px;
-}
-
-.field > .filter > .category > .list{
-    flex: 1;
-    height: 100%;
-    background : #fffaaa;
-    overflow-y: auto;
-}
 
 .modal{
     display: none;
     width: 100px;
     height: 100px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-
 }

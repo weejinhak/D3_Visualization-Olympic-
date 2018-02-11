@@ -63,7 +63,8 @@ const contents = new function() {
         that.hostCountry = await hostCountryLoader.getHostCountry(season, year);
         $sportsList.empty();
         _.map(sportsList, s => {
-            $(`<label class="check-container">${s}<input type="checkbox" name="sports" value="${s}" checked></input><span class="check-mark"></span></label><br>`).on("change", async() => {
+            //$(`<label class="check-container">${s}<input type="checkbox" name="sports" value="${s}" checked></input><span class="check-mark"></span></label><br>`).on("change", async() => {
+            $(`<input type="checkbox" name="sports" id="box-${s}" value="${s}" checked><label class="check-label" for="box-${s}">${s}</label><br>`).on("change", async() => {
                 getSportsList();
             }).appendTo($sportsList);
         });
@@ -103,9 +104,9 @@ const contents = new function() {
         $('#ranking-table').empty();
         $(`<tr><th id="table-rank" >Rank</th></tr>
                <tr><th id="table-country" >Country</th></tr>
-               <tr><th id="table-gold" ><img src="./images/gold-medal.png", height=30px, width=30px></th></tr>
-               <tr><th id="table-silver" ><img src="./images/silver-medal.png", height=30px, width=30px></th></tr>
-               <tr><th id="table-bronze" ><img src="./images/bronze-medal.png", height=30px, width=30px></th></tr>
+               <tr><th id="table-gold" ><img src="./images/gold-medal.png", height=20px, width=20px></th></tr>
+               <tr><th id="table-silver" ><img src="./images/silver-medal.png", height=20px, width=20px></th></tr>
+               <tr><th id="table-bronze" ><img src="./images/bronze-medal.png", height=20px, width=20px></th></tr>
                <tr><th id="table-sum" >Sum</th></tr>`).appendTo($('#ranking-table'));
         _.map(countryMedalRank, (cm, i) => {
             if(index - i <= 15) {
