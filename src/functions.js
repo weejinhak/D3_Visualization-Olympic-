@@ -3,22 +3,45 @@ let prevHostCountry = null;
 
 function fillMap(selection, color, data) {
 
+    let $modal = $('#something');
+    let $map = $('#map');
+
   selection
-    .attr("fill", function(d) { return typeof data[d.id] === 'undefined' ? color_init :
-                                              d3.rgb(color(data[d.id])); });
+    .attr("fill", function(d) { return typeof data[d.id] === 'undefined' ? color_init : d3.rgb(color(data[d.id])); });
 
     $('path').hover(function () {
-        console.log('path ' , this);
 
-        $('.something').css('display','block');
+        const wLeft = $map.offset().left;
+        const wRight = wLeft + 850;
+        const wTop = $map.offset().top;
+        const wBottom = wTop + 370;
 
-        const px = $(this).offset().left;
-        const py = $(this).offset().top;
+        $modal.css('display','block');
 
-        $('.something').offset({left:px , top:py});
+        const pLeft = $(this).offset().left;
+        const pTop = $(this).offset().top;
 
-        $('.something').mouseleave(function () {
-           $('.something').css('display','none');
+        const size = $modal.width();
+
+        if(pLeft < (wRight-wLeft)/2) {
+            if(pTop < (wBottom-wTop)/2) {
+
+            } else {
+
+            }
+        } else {
+            if(pTop < (wBottom-wTop)/2) {
+
+            } else {
+
+            }
+        }
+        //console.log("mPosX : ", mPosX , ", mPosY : ", mPosY);
+
+        $modal.offset({left: 250, top: 250});
+
+        $modal.mouseleave(function () {
+            $modal.css('display','none');
         });
 
     },function () {
