@@ -4,7 +4,6 @@
 .zone
   width: 100%
   height: 100%
-  border: solid 1px #aaa
 
 *
   box-sizing: border-box
@@ -17,7 +16,6 @@ body
   .content
     max-width: 1200px
     margin: auto
-    border: solid 1px #aaa
 
     .nav
       height: 50px
@@ -68,7 +66,7 @@ body
             text-align: center
             cursor: pointer
             transition-duration: 0.4s
-            height: 100%
+            height: 90%
             line-height: 48px
             &:hover
               background-color: #00838F
@@ -76,7 +74,7 @@ body
         .list
           width: 100%
           height: 85%
-          padding: 20px
+          padding: 24px 0 0 35px
           border-radius: 10px
           background: #EEEEEE
           overflow-y: auto
@@ -91,6 +89,35 @@ body
           &::-webkit-scrollbar-thumb
             border-radius: 10px
             background-color: #555
+
+          input[type=checkbox]
+            display: none
+
+          input[type=checkbox] + label
+            display: inline-block
+            cursor: pointer
+            position: relative
+            padding-left: 40px
+            font-size: 15px
+            margin-bottom: 15px
+
+          input[type=checkbox] + label:before
+            content: ""
+            width: 20px
+            height: 20px
+            position: absolute
+            left: 0
+            background-color: #ccc
+            border-radius: 2px
+
+          input[type=checkbox]:checked + label:before
+            content: "\2713"
+            font-size: 20px
+            font-weight: 800
+            color: #fff
+            background: #0097A7
+            text-align: center
+            line-height: 18px
 
     .table
       table

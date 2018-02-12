@@ -7,23 +7,23 @@ function fillMap(selection, color, data) {
     .attr("fill", function(d) { return typeof data[d.id] === 'undefined' ? color_init :
                                               d3.rgb(color(data[d.id])); });
 
-    // $('path').hover(function () {
-    //     console.log('path ' , this);
-    //
-    //     $('.modal').css('display','block');
-    //
-    //     const px = $(this).offset().left;
-    //     const py = $(this).offset().top;
-    //
-    //     $('.modal').offset({left:px , top:py});
-    //
-    //     $('.modal').mouseleave(function () {
-    //        $('.modal').css('display','none');
-    //     });
-    //
-    // },function () {
-    //
-    // });
+    $('path').hover(function () {
+        console.log('path ' , this);
+
+        $('.something').css('display','block');
+
+        const px = $(this).offset().left;
+        const py = $(this).offset().top;
+
+        $('.something').offset({left:px , top:py});
+
+        $('.something').mouseleave(function () {
+           $('.something').css('display','none');
+        });
+
+    },function () {
+
+    });
 }
 
 function setPathTitle(selection, data) {
