@@ -77,7 +77,7 @@ body {
             border-radius: 10px;
             background-color: #555; }
     body .content .table table {
-      width: 95%;
+      width: 100%;
       table-layout: fixed; }
     body .content .table table, body .content .table th, body .content .table td {
       border: white 1px solid;
